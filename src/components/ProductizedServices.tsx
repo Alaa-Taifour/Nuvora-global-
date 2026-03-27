@@ -5,35 +5,17 @@ import { cn } from '../lib/utils';
 
 const services = [
   {
-    title: "AI Lead Generation System",
-    outcome: "300% more qualified leads",
-    deliverables: ["Custom AI scraper", "Autonomous outreach agents", "CRM integration", "Lead scoring engine"],
-    timeline: "14 Days",
-    pricing: "From $4,997/mo",
-    icon: Zap,
-    color: "text-cyan-accent",
-    bg: "bg-cyan-accent/10"
+    title: "AI Lead Machine",
+    result: "Generate qualified leads automatically",
   },
   {
-    title: "AI Customer Support Agent",
-    outcome: "90% reduction in manual tickets",
-    deliverables: ["Custom LLM training", "Omnichannel integration", "Human-handoff protocol", "Sentiment analysis"],
-    timeline: "14 Days",
-    pricing: "From $2,997/mo",
-    icon: Bot,
-    color: "text-purple-accent",
-    bg: "bg-purple-accent/10"
+    title: "AI Support Agent",
+    result: "Respond to customers 24/7",
   },
   {
-    title: "Full AI Automation Infrastructure",
-    outcome: "Replace entire operational teams",
-    deliverables: ["End-to-end workflow audit", "Custom internal AI tools", "Automated reporting", "Ongoing AI optimization"],
-    timeline: "30 Days",
-    pricing: "Custom Quote",
-    icon: Cpu,
-    color: "text-blue-accent",
-    bg: "bg-blue-accent/10"
-  }
+    title: "AI Revenue Engine",
+    result: "Turn traffic into revenue",
+  },
 ];
 
 export const ProductizedServices: React.FC = () => {
