@@ -21,7 +21,7 @@ export const LiveDemo: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-32 relative overflow-hidden bg-black/40">
+    <section id="demo" className="py-32 relative overflow-hidden bg-black/40">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-20">
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border-white/10 mb-6">
