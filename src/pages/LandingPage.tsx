@@ -34,6 +34,7 @@ export const LandingPage: React.FC = () => {
       
       <main>
         <Hero />
+        <TrustSection />
         <LiveDemo />
         <ProductizedServices />
         <Comparison />
