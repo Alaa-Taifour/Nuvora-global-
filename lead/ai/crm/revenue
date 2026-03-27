@@ -1,0 +1,6 @@
+<motion.div
+  animate={{ x: [0, 50, 0] }}
+  transition={{ repeat: Infinity, duration: 3 }}
+>
+  🤖 Processing Lead...
+</motion.div>
