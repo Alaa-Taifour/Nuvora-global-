@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profile",
+      "description": "Stores user profile information and preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique identifier for the user." },
+        "email": { "type": "string", "format": "email", "description": "User's email address." },
+        "displayName": { "type": "string", "description": "User's display name." },
+        "photoURL": { "type": "string", "format": "uri", "description": "User's profile picture URL." },
+        "role": { "type": "string", "enum": ["user", "admin"], "description": "User's role in the platform." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "When the user account was created." }
+      },
+      "required": ["uid", "email", "role", "createdAt"]
+    },
+    "conversations": {
+      "title": "AI Conversation",
+      "description": "Stores chat history between the user and the AI agent.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The ID of the user who owns this conversation." },
+        "messages": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "role": { "type": "string", "enum": ["user", "assistant"] },
+              "content": { "type": "string" },
+              "timestamp": { "type": "string", "format": "date-time" }
+            }
+          }
+        },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "messages", "updatedAt"]
+    },
+    "serviceRequests": {
+      "title": "Service Request",
+      "description": "Stores requests for digital services like SEO, branding, etc.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The ID of the user who made the request." },
+        "serviceType": { "type": "string", "description": "Type of service (e.g., SEO, Web Dev)." },
+        "status": { "type": "string", "enum": ["pending", "in-progress", "completed"] },
+        "details": { "type": "string", "description": "Additional details about the request." },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "serviceType", "status", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": { "schema": "users", "description": "Individual user profiles." },
+    "/users/{userId}/conversations/{conversationId}": { "schema": "conversations", "description": "User-specific chat history." },
+    "/users/{userId}/serviceRequests/{requestId}": { "schema": "serviceRequests", "description": "User-specific service requests." }
+  }
+}
