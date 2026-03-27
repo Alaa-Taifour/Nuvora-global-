@@ -34,18 +34,14 @@ export const LandingPage: React.FC = () => {
       
       <main>
         <Hero />
-        <TrustStack />
-        <WhoThisIsFor />
         <LiveDemo />
         <ProductizedServices />
         <Comparison />
         <ROICalculator />
-        <Timeline />
         <AIAuditFunnel />
         <FAQ />
+        <Footer />
       </main>
-
-      <Footer />
 
       {/* Floating Chat Button */}
       <motion.div
