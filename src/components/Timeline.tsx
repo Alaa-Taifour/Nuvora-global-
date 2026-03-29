@@ -27,14 +27,14 @@ export const Timeline: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
           {steps.map((step, i) => (
-            <div key={i} className="relative p-8 rounded-[40px] glass-dark border-white/5 apple-shadow group hover:border-cyan-accent/20 transition-all duration-500">
-              <div className="text-4xl font-black text-gradient mb-4">{step.day}</div>
-              <h3 className="text-xl font-bold text-white uppercase tracking-tight mb-4">{step.title}</h3>
-              <p className="text-sm text-gray-400 leading-relaxed mb-6">{step.description}</p>
-              <div className="absolute bottom-8 right-8 opacity-10 group-hover:opacity-100 transition-opacity">
-                <CheckCircle2 className="w-10 h-10 text-cyan-accent" />
+            <div key={i} className="relative p-6 md:p-8 rounded-3xl md:rounded-[40px] glass-dark border-white/5 apple-shadow group hover:border-cyan-accent/20 transition-all duration-500">
+              <div className="text-3xl md:text-4xl font-black text-gradient mb-3 md:mb-4">{step.day}</div>
+              <h3 className="text-lg md:text-xl font-bold text-white uppercase tracking-tight mb-3 md:mb-4">{step.title}</h3>
+              <p className="text-xs md:text-sm text-gray-400 leading-relaxed mb-6">{step.description}</p>
+              <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 opacity-10 group-hover:opacity-100 transition-opacity">
+                <CheckCircle2 className="w-8 h-8 md:w-10 md:h-10 text-cyan-accent" />
               </div>
             </div>
           ))}

@@ -21,54 +21,54 @@ export const LiveDemo: React.FC = () => {
   }, []);
 
   return (
-    <section id="demo" className="py-32 relative overflow-hidden bg-black/40">
+    <section className="py-16 md:py-32 relative overflow-hidden bg-black/40">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 md:mb-20">
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border-white/10 mb-6">
             <Activity className="w-4 h-4 text-cyan-accent" />
             <span className="text-xs font-bold uppercase tracking-widest text-gray-300">Interactive Workflow</span>
           </div>
-          <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6">
+          <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6">
             The <span className="text-gradient">AI Command</span> Center
           </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
             Watch how Nuvora automates your entire sales funnel from lead capture to revenue.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Workflow Visualization */}
-          <div className="relative p-8 rounded-[48px] glass-dark border-white/5 apple-shadow min-h-[500px] flex flex-col justify-between">
+          <div className="relative p-6 md:p-8 rounded-3xl md:rounded-[48px] glass-dark border-white/5 apple-shadow min-h-[400px] md:min-h-[500px] flex flex-col justify-between">
             <div className="absolute inset-0 z-0 opacity-20">
               <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.1),transparent_70%)]" />
             </div>
 
-            <div className="relative z-10 space-y-12">
+            <div className="relative z-10 space-y-8 md:space-y-12">
               {steps.map((step, i) => (
-                <div key={step.id} className="relative flex items-center space-x-6">
+                <div key={step.id} className="relative flex items-center space-x-4 md:space-x-6">
                   <motion.div
                     animate={{
                       scale: activeStep === i ? 1.1 : 1,
                       opacity: activeStep === i ? 1 : 0.4,
                     }}
                     className={cn(
-                      "w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500",
+                      "w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center transition-all duration-500",
                       activeStep === i ? step.bg : "bg-white/5"
                     )}
                   >
-                    <step.icon className={cn("w-8 h-8", activeStep === i ? step.color : "text-gray-600")} />
+                    <step.icon className={cn("w-6 h-6 md:w-8 md:h-8", activeStep === i ? step.color : "text-gray-600")} />
                   </motion.div>
                   
                   <div className="flex-1">
                     <motion.h3
                       animate={{ opacity: activeStep === i ? 1 : 0.4 }}
-                      className="text-xl font-bold text-white uppercase tracking-tight"
+                      className="text-lg md:text-xl font-bold text-white uppercase tracking-tight"
                     >
                       {step.label}
                     </motion.h3>
                     <motion.p
                       animate={{ opacity: activeStep === i ? 1 : 0 }}
-                      className="text-sm text-gray-400"
+                      className="text-xs md:text-sm text-gray-400"
                     >
                       {i === 0 && "Lead captured from landing page or social."}
                       {i === 1 && "AI qualifies lead and schedules a call instantly."}
@@ -78,7 +78,7 @@ export const LiveDemo: React.FC = () => {
                   </div>
 
                   {i < steps.length - 1 && (
-                    <div className="absolute left-8 top-16 w-0.5 h-12 bg-white/5 overflow-hidden">
+                    <div className="absolute left-6 md:left-8 top-12 md:top-16 w-0.5 h-8 md:h-12 bg-white/5 overflow-hidden">
                       <motion.div
                         animate={{
                           top: activeStep === i ? "0%" : "-100%",
@@ -94,20 +94,20 @@ export const LiveDemo: React.FC = () => {
           </div>
 
           {/* AI Chat Preview */}
-          <div className="relative rounded-[48px] overflow-hidden glass-dark border-white/10 apple-shadow h-[500px] flex flex-col">
-            <div className="p-6 border-b border-white/5 flex items-center justify-between bg-white/5">
-              <div className="flex items-center space-x-3">
-                <div className="w-3 h-3 bg-red-500 rounded-full" />
-                <div className="w-3 h-3 bg-yellow-500 rounded-full" />
-                <div className="w-3 h-3 bg-green-500 rounded-full" />
+          <div className="relative rounded-3xl md:rounded-[48px] overflow-hidden glass-dark border-white/10 apple-shadow h-[400px] md:h-[500px] flex flex-col">
+            <div className="p-4 md:p-6 border-b border-white/5 flex items-center justify-between bg-white/5">
+              <div className="flex items-center space-x-2 md:space-x-3">
+                <div className="w-2 h-2 md:w-3 md:h-3 bg-red-500 rounded-full" />
+                <div className="w-2 h-2 md:w-3 md:h-3 bg-yellow-500 rounded-full" />
+                <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full" />
               </div>
-              <div className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Nuvora AI Agent • Live</div>
+              <div className="text-[8px] md:text-[10px] font-bold uppercase tracking-widest text-gray-500">Nuvora AI Agent • Live</div>
             </div>
             
-            <div className="flex-1 p-6 space-y-6 overflow-y-auto font-mono text-sm">
+            <div className="flex-1 p-4 md:p-6 space-y-4 md:space-y-6 overflow-y-auto font-mono text-xs md:text-sm">
               <div className="flex space-x-3">
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0"><User className="w-4 h-4 text-gray-400" /></div>
-                <div className="bg-white/5 p-4 rounded-2xl rounded-tl-none border border-white/5 text-gray-300">
+                <div className="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0"><User className="w-3 h-3 md:w-4 md:h-4 text-gray-400" /></div>
+                <div className="bg-white/5 p-3 md:p-4 rounded-xl md:rounded-2xl rounded-tl-none border border-white/5 text-gray-300">
                   "I'm interested in your AI automation services for my e-commerce brand."
                 </div>
               </div>
@@ -118,15 +118,15 @@ export const LiveDemo: React.FC = () => {
                 transition={{ delay: 1 }}
                 className="flex space-x-3"
               >
-                <div className="w-8 h-8 rounded-lg bg-cyan-accent/20 flex items-center justify-center flex-shrink-0"><Bot className="w-4 h-4 text-cyan-accent" /></div>
-                <div className="bg-cyan-accent/5 p-4 rounded-2xl rounded-tl-none border border-cyan-accent/20 text-cyan-50">
+                <div className="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-cyan-accent/20 flex items-center justify-center flex-shrink-0"><Bot className="w-3 h-3 md:w-4 md:h-4 text-cyan-accent" /></div>
+                <div className="bg-cyan-accent/5 p-3 md:p-4 rounded-xl md:rounded-2xl rounded-tl-none border border-cyan-accent/20 text-cyan-50">
                   "Great! I've analyzed your store. You could save ~40 hours/week by automating customer support. Would you like to see a custom ROI projection?"
                 </div>
               </motion.div>
 
               <div className="flex space-x-3">
-                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0"><User className="w-4 h-4 text-gray-400" /></div>
-                <div className="bg-white/5 p-4 rounded-2xl rounded-tl-none border border-white/5 text-gray-300">
+                <div className="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0"><User className="w-3 h-3 md:w-4 md:h-4 text-gray-400" /></div>
+                <div className="bg-white/5 p-3 md:p-4 rounded-xl md:rounded-2xl rounded-tl-none border border-white/5 text-gray-300">
                   "Yes, please. How fast can we implement this?"
                 </div>
               </div>
@@ -137,16 +137,16 @@ export const LiveDemo: React.FC = () => {
                 transition={{ delay: 2 }}
                 className="flex space-x-3"
               >
-                <div className="w-8 h-8 rounded-lg bg-cyan-accent/20 flex items-center justify-center flex-shrink-0"><Bot className="w-4 h-4 text-cyan-accent" /></div>
-                <div className="bg-cyan-accent/5 p-4 rounded-2xl rounded-tl-none border border-cyan-accent/20 text-cyan-50">
+                <div className="w-6 h-6 md:w-8 md:h-8 rounded-lg bg-cyan-accent/20 flex items-center justify-center flex-shrink-0"><Bot className="w-3 h-3 md:w-4 md:h-4 text-cyan-accent" /></div>
+                <div className="bg-cyan-accent/5 p-3 md:p-4 rounded-xl md:rounded-2xl rounded-tl-none border border-cyan-accent/20 text-cyan-50">
                   "We can have your core system live in 14 days. I've sent a calendar link to your email. Let's build your future."
                 </div>
               </motion.div>
             </div>
 
-            <div className="p-4 bg-white/5 border-t border-white/5">
-              <div className="w-full h-10 bg-white/5 rounded-xl border border-white/10 flex items-center px-4">
-                <span className="text-gray-600">Type a message...</span>
+            <div className="p-3 md:p-4 bg-white/5 border-t border-white/5">
+              <div className="w-full h-8 md:h-10 bg-white/5 rounded-lg md:rounded-xl border border-white/10 flex items-center px-3 md:px-4">
+                <span className="text-xs text-gray-600">Type a message...</span>
               </div>
             </div>
           </div>

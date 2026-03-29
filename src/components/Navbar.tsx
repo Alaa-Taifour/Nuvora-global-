@@ -32,18 +32,19 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav className={cn(
-      'fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4 lg:px-8 py-6',
-      isScrolled ? 'py-4' : 'py-8'
+      'fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4 md:px-8 py-4 md:py-6',
+      isScrolled ? 'py-2 md:py-4' : 'py-4 md:py-8'
     )}>
       <div className={cn(
-        'container mx-auto px-6 py-3 rounded-full transition-all duration-500 flex items-center justify-between max-w-7xl',
+        'container mx-auto px-4 md:px-6 py-2 md:py-3 rounded-full transition-all duration-500 flex items-center justify-between max-w-7xl',
         isScrolled ? 'glass-dark apple-shadow border-white/10' : 'bg-transparent border-transparent'
       )}>
-        <Link to="/" className="flex items-center space-x-3 group">
-          <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center group-hover:bg-cyan-accent transition-colors duration-500 apple-shadow">
-            <Rocket className="w-6 h-6 text-black" />
+        <Link to="/" className="flex items-center space-x-2 md:space-x-3 group">
+          <div className="w-8 h-8 md:w-10 md:h-10 bg-white rounded-lg md:rounded-xl flex items-center justify-center group-hover:bg-cyan-accent transition-colors duration-500 apple-shadow">
+            <Rocket className="w-5 h-5 md:w-6 md:h-6 text-black" />
           </div>
-          <span className="text-2xl font-black uppercase tracking-tighter text-white">Nuvora</span>
+          <span className="text-xl md:text-2xl font-black uppercase tracking-tighter text-white">Nuvora</span>
+          <span className="hidden sm:inline-block text-[8px] font-black uppercase tracking-widest text-cyan-accent/50 border border-cyan-accent/20 px-1.5 py-0.5 rounded-sm">v1.1</span>
         </Link>
 
         {/* Desktop Links */}
@@ -89,7 +90,7 @@ export const Navbar: React.FC = () => {
           className="lg:hidden text-white p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
+          {isMobileMenuOpen ? <X className="w-6 h-6 md:w-8 md:h-8" /> : <Menu className="w-6 h-6 md:w-8 md:h-8" />}
         </button>
       </div>
 
@@ -97,18 +98,18 @@ export const Navbar: React.FC = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-4 right-4 mt-4 glass-dark rounded-[40px] p-10 border-white/10 apple-shadow lg:hidden"
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+            className="absolute top-full left-4 right-4 mt-2 glass-dark rounded-3xl p-6 border-white/10 apple-shadow lg:hidden"
           >
-            <div className="flex flex-col space-y-8">
+            <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-2xl font-black uppercase tracking-tighter text-white hover:text-cyan-accent"
+                  className="text-lg font-black uppercase tracking-tighter text-white hover:text-cyan-accent py-2"
                 >
                   {link.name}
                 </a>
@@ -118,13 +119,13 @@ export const Navbar: React.FC = () => {
                   <Link
                     to="/dashboard"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-2xl font-black uppercase tracking-tighter text-white hover:text-cyan-accent"
+                    className="text-lg font-black uppercase tracking-tighter text-white hover:text-cyan-accent py-2"
                   >
                     Dashboard
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="text-2xl font-black uppercase tracking-tighter text-red-500 text-left"
+                    className="text-lg font-black uppercase tracking-tighter text-red-500 text-left py-2"
                   >
                     Logout
                   </button>
@@ -133,7 +134,7 @@ export const Navbar: React.FC = () => {
                 <Link
                   to="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="bg-white text-black px-8 py-5 rounded-full text-xl font-black uppercase tracking-tighter text-center"
+                  className="bg-white text-black px-8 py-4 rounded-2xl text-base font-black uppercase tracking-tighter text-center mt-4"
                 >
                   Client Portal
                 </Link>

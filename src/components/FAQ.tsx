@@ -25,26 +25,26 @@ export const FAQ: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-32 bg-navy-950">
-      <div className="container mx-auto px-8 max-w-4xl">
-        <div className="text-center mb-20">
+    <section className="py-16 md:py-32 bg-navy-950">
+      <div className="container mx-auto px-4 md:px-8 max-w-4xl">
+        <div className="text-center mb-12 md:mb-20">
           <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass border-white/10 mb-6">
             <HelpCircle className="w-4 h-4 text-cyan-accent" />
             <span className="text-[10px] font-black uppercase tracking-widest text-gray-300">Common Questions</span>
           </div>
-          <h2 className="text-5xl font-black uppercase tracking-tighter mb-4">Addressing Your <span className="text-gradient">Objections</span></h2>
-          <p className="text-gray-400 font-medium">Everything you need to know before architecting your AI future.</p>
+          <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tighter mb-4">Addressing Your <span className="text-gradient">Objections</span></h2>
+          <p className="text-sm md:text-base text-gray-400 font-medium">Everything you need to know before architecting your AI future.</p>
         </div>
 
         <div className="space-y-4">
           {faqs.map((faq, i) => (
-            <div key={i} className="rounded-[32px] glass-dark border-white/5 overflow-hidden apple-shadow">
+            <div key={i} className="rounded-2xl md:rounded-[32px] glass-dark border-white/5 overflow-hidden apple-shadow">
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full px-10 py-8 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
+                className="w-full px-6 md:px-10 py-6 md:py-8 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
               >
-                <span className="text-xl font-black uppercase tracking-tight">{faq.question}</span>
-                {openIndex === i ? <Minus className="w-6 h-6 text-cyan-accent" /> : <Plus className="w-6 h-6 text-gray-500" />}
+                <span className="text-base md:text-xl font-black uppercase tracking-tight pr-4">{faq.question}</span>
+                {openIndex === i ? <Minus className="w-5 h-5 md:w-6 md:h-6 text-cyan-accent flex-shrink-0" /> : <Plus className="w-5 h-5 md:w-6 md:h-6 text-gray-500 flex-shrink-0" />}
               </button>
               <AnimatePresence>
                 {openIndex === i && (
@@ -54,7 +54,7 @@ export const FAQ: React.FC = () => {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="px-10 pb-8 text-gray-400 leading-relaxed font-medium">
+                    <div className="px-6 md:px-10 pb-6 md:pb-8 text-sm md:text-base text-gray-400 leading-relaxed font-medium">
                       {faq.answer}
                     </div>
                   </motion.div>

@@ -77,36 +77,36 @@ export const ROICalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="relative p-12 rounded-[60px] glass-dark border-white/10 apple-shadow overflow-hidden">
-            <div className="absolute top-0 right-0 p-8 opacity-10">
-              <TrendingUp className="w-40 h-40 text-cyan-accent" />
+          <div className="relative p-6 md:p-12 rounded-3xl md:rounded-[60px] glass-dark border-white/10 apple-shadow overflow-hidden">
+            <div className="absolute top-0 right-0 p-6 md:p-8 opacity-10">
+              <TrendingUp className="w-24 h-24 md:w-40 md:h-40 text-cyan-accent" />
             </div>
 
-            <div className="relative z-10 space-y-12">
+            <div className="relative z-10 space-y-8 md:space-y-12">
               <div>
-                <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Current Operational Cost</div>
-                <div className="text-5xl font-black text-white">${currentCost.toLocaleString()}</div>
+                <div className="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Current Operational Cost</div>
+                <div className="text-3xl md:text-5xl font-black text-white">${currentCost.toLocaleString()}</div>
               </div>
 
-              <div className="p-8 rounded-[40px] bg-gradient-accent apple-shadow">
-                <div className="text-xs font-bold text-white/70 uppercase tracking-widest mb-2">Estimated Annual Savings</div>
-                <div className="text-6xl font-black text-white">${savings.toLocaleString()}</div>
+              <div className="p-6 md:p-8 rounded-2xl md:rounded-[40px] bg-gradient-accent apple-shadow">
+                <div className="text-[10px] md:text-xs font-bold text-white/70 uppercase tracking-widest mb-2">Estimated Annual Savings</div>
+                <div className="text-4xl md:text-6xl font-black text-white">${savings.toLocaleString()}</div>
               </div>
 
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
                 <div>
-                  <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">New Operational Cost</div>
-                  <div className="text-3xl font-black text-cyan-accent">${newCost.toLocaleString()}</div>
+                  <div className="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">New Operational Cost</div>
+                  <div className="text-2xl md:text-3xl font-black text-cyan-accent">${newCost.toLocaleString()}</div>
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Time Saved / Year</div>
-                  <div className="text-3xl font-black text-purple-accent">{(employees * 2000 * (automationEfficiency / 100)).toLocaleString()} hrs</div>
+                  <div className="text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Time Saved / Year</div>
+                  <div className="text-2xl md:text-3xl font-black text-purple-accent">{(employees * 2000 * (automationEfficiency / 100)).toLocaleString()} hrs</div>
                 </div>
               </div>
 
-              <button className="w-full bg-white text-black py-6 rounded-3xl font-bold text-xl hover:bg-cyan-accent hover:text-white transition-all flex items-center justify-center space-x-3 apple-shadow">
+              <button className="w-full bg-white text-black py-4 md:py-6 rounded-2xl md:rounded-3xl font-bold text-lg md:text-xl hover:bg-cyan-accent hover:text-white transition-all flex items-center justify-center space-x-3 apple-shadow">
                 <span>Get Full AI Audit</span>
-                <ArrowRight className="w-6 h-6" />
+                <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
               </button>
             </div>
           </div>

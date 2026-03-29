@@ -16,6 +16,7 @@ import {
   ArrowLeft
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { GoogleGenAI } from "@google/genai";
 
 export const Generator: React.FC = () => {
   const [input, setInput] = useState('');
@@ -28,11 +29,22 @@ export const Generator: React.FC = () => {
     setIsGenerating(true);
     setOutput(null);
     
-    // Simulate AI generation
-    setTimeout(() => {
-      setOutput(`### AI Strategy Report: ${input}\n\nBased on our deep-scan of your current infrastructure, we recommend the following autonomous systems:\n\n1. **Lead Generation Agent**: Deploy a custom-trained LLM on your historical sales data to automate outbound outreach with 95% personalization accuracy.\n2. **Support Infrastructure**: Implement a RAG-based support agent capable of handling 80% of tier-1 inquiries without human intervention.\n3. **Workflow Automation**: Connect your CRM to our neural processing engine to automate data entry and lead scoring.\n\n**Estimated ROI**: 340% increase in efficiency over 6 months.`);
+    try {
+      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
+      const response = await ai.models.generateContent({
+        model: "gemini-3-flash-preview",
+        contents: [{ role: 'user', parts: [{ text: `Generate a detailed AI automation strategy for the following business challenge: ${input}. 
+        Format the response with clear headings, bullet points, and an estimated ROI section. 
+        Keep the tone professional, elite, and strategic.` }] }],
+      });
+
+      setOutput(response.text || "I'm sorry, I couldn't generate a strategy at this time.");
+    } catch (error) {
+      console.error('Generation error:', error);
+      setOutput("An error occurred while generating your strategy. Please try again.");
+    } finally {
       setIsGenerating(false);
-    }, 3000);
+    }
   };
 
   const handleCopy = () => {

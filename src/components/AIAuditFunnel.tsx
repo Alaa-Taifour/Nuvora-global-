@@ -120,54 +120,54 @@ export const AIAuditFunnel: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="max-w-4xl mx-auto"
           >
-            <div className="glass-dark border-white/10 rounded-[60px] p-12 apple-shadow overflow-hidden relative">
-              <div className="absolute top-0 right-0 p-12 opacity-5">
-                <BarChart3 className="w-64 h-64" />
+            <div className="glass-dark border-white/10 rounded-3xl md:rounded-[60px] p-6 md:p-12 apple-shadow overflow-hidden relative">
+              <div className="absolute top-0 right-0 p-6 md:p-12 opacity-5">
+                <BarChart3 className="w-32 h-32 md:w-64 md:h-64" />
               </div>
               
               <div className="relative z-10">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-16">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8 mb-8 md:mb-16">
                   <div>
-                    <div className="text-cyan-accent font-bold uppercase tracking-[0.3em] mb-2">Audit Complete</div>
-                    <h3 className="text-5xl font-black uppercase tracking-tighter">Your AI <span className="text-gradient">Roadmap</span></h3>
+                    <div className="text-cyan-accent font-bold text-[10px] md:text-xs uppercase tracking-[0.3em] mb-2">Audit Complete</div>
+                    <h3 className="text-3xl md:text-5xl font-black uppercase tracking-tighter">Your AI <span className="text-gradient">Roadmap</span></h3>
                   </div>
-                  <div className="bg-white/5 border border-white/10 rounded-3xl p-6 text-center">
-                    <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Efficiency Score</div>
-                    <div className="text-4xl font-black text-white">42/100</div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                  <div className="p-8 rounded-[40px] glass border-white/5">
-                    <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Potential Savings</div>
-                    <div className="text-4xl font-black text-white">$12,400<span className="text-sm text-gray-500">/mo</span></div>
-                  </div>
-                  <div className="p-8 rounded-[40px] glass border-white/5">
-                    <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">Time Reclaimed</div>
-                    <div className="text-4xl font-black text-cyan-accent">140<span className="text-sm text-gray-500">hrs/mo</span></div>
-                  </div>
-                  <div className="p-8 rounded-[40px] glass border-white/5">
-                    <div className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-4">ROI Multiplier</div>
-                    <div className="text-4xl font-black text-purple-accent">8.4x</div>
+                  <div className="bg-white/5 border border-white/10 rounded-2xl md:rounded-3xl p-4 md:p-6 text-center">
+                    <div className="text-[8px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Efficiency Score</div>
+                    <div className="text-2xl md:text-4xl font-black text-white">42/100</div>
                   </div>
                 </div>
 
-                <div className="bg-cyan-accent/10 border border-cyan-accent/20 rounded-[40px] p-10 mb-16">
-                  <h4 className="text-xl font-black uppercase tracking-tight mb-4 flex items-center space-x-3">
-                    <CheckCircle2 className="w-6 h-6 text-cyan-accent" />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-16">
+                  <div className="p-6 md:p-8 rounded-2xl md:rounded-[40px] glass border-white/5">
+                    <div className="text-[8px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3 md:mb-4">Potential Savings</div>
+                    <div className="text-2xl md:text-4xl font-black text-white">$12,400<span className="text-xs md:text-sm text-gray-500">/mo</span></div>
+                  </div>
+                  <div className="p-6 md:p-8 rounded-2xl md:rounded-[40px] glass border-white/5">
+                    <div className="text-[8px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3 md:mb-4">Time Reclaimed</div>
+                    <div className="text-2xl md:text-4xl font-black text-cyan-accent">140<span className="text-xs md:text-sm text-gray-500">hrs/mo</span></div>
+                  </div>
+                  <div className="p-6 md:p-8 rounded-2xl md:rounded-[40px] glass border-white/5">
+                    <div className="text-[8px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3 md:mb-4">ROI Multiplier</div>
+                    <div className="text-2xl md:text-4xl font-black text-purple-accent">8.4x</div>
+                  </div>
+                </div>
+
+                <div className="bg-cyan-accent/10 border border-cyan-accent/20 rounded-2xl md:rounded-[40px] p-6 md:p-10 mb-8 md:mb-16">
+                  <h4 className="text-lg md:text-xl font-black uppercase tracking-tight mb-3 md:mb-4 flex items-center space-x-3">
+                    <CheckCircle2 className="w-5 h-5 md:w-6 md:h-6 text-cyan-accent" />
                     <span>Primary Recommendation</span>
                   </h4>
-                  <p className="text-gray-300 leading-relaxed font-medium">
+                  <p className="text-sm md:text-base text-gray-300 leading-relaxed font-medium">
                     Based on your bottleneck in <span className="text-white font-bold">"{watch('bottleneck') || 'manual operations'}"</span>, we recommend deploying an <span className="text-cyan-accent font-bold">Autonomous Operations Agent</span>. This system will handle 85% of these manual tasks, allowing your team to focus on high-leverage growth.
                   </p>
                 </div>
 
                 <div className="text-center">
-                  <button className="bg-white text-black px-12 py-6 rounded-full text-xl font-black uppercase tracking-tighter hover:bg-cyan-accent hover:text-white transition-all apple-shadow flex items-center justify-center space-x-4 mx-auto mb-6">
+                  <button className="w-full md:w-auto bg-white text-black px-8 md:px-12 py-4 md:py-6 rounded-full text-lg md:text-xl font-black uppercase tracking-tighter hover:bg-cyan-accent hover:text-white transition-all apple-shadow flex items-center justify-center space-x-4 mx-auto mb-6">
                     <span>Book Strategy Session</span>
-                    <ArrowRight className="w-6 h-6" />
+                    <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
                   </button>
-                  <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Limited Availability: 3 Spots Left for April</p>
+                  <p className="text-[8px] md:text-[10px] font-bold text-gray-500 uppercase tracking-widest">Limited Availability: 3 Spots Left for April</p>
                 </div>
               </div>
             </div>

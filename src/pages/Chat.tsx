@@ -4,7 +4,7 @@ import { useAuth } from '../components/AuthContext';
 import { Navigate } from 'react-router-dom';
 import { Send, Bot, User, Loader2, Sparkles, Rocket, ChevronLeft } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
-import { db, collection, addDoc, query, where, onSnapshot, serverTimestamp } from '../lib/firebase';
+import { db, collection, addDoc, query, where, onSnapshot, serverTimestamp, handleFirestoreError, OperationType } from '../lib/firebase';
 
 export const Chat: React.FC = () => {
   const { user, profile, loading: authLoading } = useAuth();
@@ -16,13 +16,20 @@ export const Chat: React.FC = () => {
   useEffect(() => {
     if (!user) return;
 
-    const unsubscribe = onSnapshot(collection(db, 'users', user.uid, 'conversations'), (snapshot) => {
-      const msgs: any[] = [];
-      snapshot.forEach((doc) => {
-        msgs.push({ id: doc.id, ...doc.data() });
-      });
-      setMessages(msgs.sort((a, b) => (a.timestamp?.seconds || 0) - (b.timestamp?.seconds || 0)));
-    });
+    const path = `users/${user.uid}/conversations`;
+    const unsubscribe = onSnapshot(
+      collection(db, 'users', user.uid, 'conversations'), 
+      (snapshot) => {
+        const msgs: any[] = [];
+        snapshot.forEach((doc) => {
+          msgs.push({ id: doc.id, ...doc.data() });
+        });
+        setMessages(msgs.sort((a, b) => (a.timestamp?.seconds || 0) - (b.timestamp?.seconds || 0)));
+      },
+      (error) => {
+        handleFirestoreError(error, OperationType.GET, path);
+      }
+    );
 
     return () => unsubscribe();
   }, [user]);
@@ -39,6 +46,7 @@ export const Chat: React.FC = () => {
     if (!input.trim() || isTyping) return;
 
     const userMessage = input.trim();
+    const path = `users/${user.uid}/conversations`;
     setInput('');
     setIsTyping(true);
 
@@ -51,7 +59,7 @@ export const Chat: React.FC = () => {
       });
 
       const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
-      const model = ai.models.generateContent({
+      const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
         contents: [{ role: 'user', parts: [{ text: userMessage }] }],
         config: {
@@ -59,7 +67,6 @@ export const Chat: React.FC = () => {
         }
       });
 
-      const response = await model;
       const aiContent = response.text || "I'm sorry, I couldn't process that request.";
 
       await addDoc(collection(db, 'users', user.uid, 'conversations'), {
@@ -71,6 +78,9 @@ export const Chat: React.FC = () => {
 
     } catch (error) {
       console.error('Chat error:', error);
+      if (error instanceof Error && error.message.includes('permission')) {
+        handleFirestoreError(error, OperationType.WRITE, path);
+      }
     } finally {
       setIsTyping(false);
     }
